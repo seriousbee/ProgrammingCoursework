@@ -1,3 +1,17 @@
+def print_welcome_message():
+    print('Welcome to Split-it\n')
+    print_menu_options()
+
+
+def print_menu_options():
+    menu_dict = {'About\t\t': '(A)', 'CreateProject\t': '(C)',
+             'Enter Votes\t': '(V)', 'Show Project\t': '(S)',
+             'Quit\t\t': '(Q)'}
+    for k, v in menu_dict.items():
+        print(f'{k} {v}') # not 100% what this f is but it doesn't work without it
+    print("Please choose an option and press <ENTER>:")
+
+
 def is_int(text):
     try:
         int(text)
@@ -6,62 +20,27 @@ def is_int(text):
         return False
 
 
-def main():
-    menu1 = {'About\t\t': '(A)', 'CreateProject\t': '(C)',
-             'Enter Votes\t': '(V)', 'Show Project\t': '(S)',
-             'Quit\t\t': '(Q)'}
+def option_A():
+    print("\n")
+    print("------------")
+    print('\033[1m' + 'Option A: About Spliddit\n' + '\033[0m')
+    import textwrap
 
-    print('Welcome to Split-it\n')
+    instruction = """Hello. This is Spliddit. I am an app that can help you share and distribute things 
+            with your friends and colleagues, from grades to bills, 
+            to notes and good memories. What would you like to split today? 
+            You can decide that by personalizing me in option C."""
+    list = textwrap.wrap(instruction, width=50)
+    for element in list:
+        print(element)
+    input("\nPress <Enter> to return to the main menu: ")
+    main()  # woow, this is dangerous
 
-    for k, v in menu1.items():
-        print(f'{k} {v}') #not 100% what this f is but it doesn't work without it
-    choice = input("\n Please choose an option and press <ENTER>: ")
-    status = False
-    count = 0
-    max_attempt = 3
-    items = ['A', 'C', 'V', 'S', 'Q']
-
-    while choice not in items:
-        count += 1
-        if count > max_attempt:
-            exit()
-        choice = input("\n Please choose only options from the menu above: ")
-        if choice in items: break
-
-    if choice == 'A':
-        print("\n\n\n ")
-        print('\033[1m' + 'Option A: About Spliddit\n' + '\033[0m')
-        import textwrap
-
-        instruction = """Hello. This is Spliddit. I am an app that can help you share and distribute things 
-        with your friends and colleagues, from grades to bills, 
-        to notes and good memories. What would you like to split today? 
-        You can decide that by personalizing me in option C."""
-        list = textwrap.wrap(instruction, width=50)
-        for element in list:
-            print(element)
-        input("\nPress <Enter> to return to the main menu: ")
-        main()
-
-    if choice == 'Q':
-        from sys import exit
-
-        exit()  # is there a posher way of leaving?
-
-    if choice == 'V':
-        print('\n')
-        main()  # Other option needed to get back to Menu (goto?)
-
-    if choice == 'S':
-        print('\n')
-        main()  # Other option needed to get back to Menu (goto?)
-
-    # input
-    print("\n\n\n ")
+def option_C():
     print('\033[1m' + 'Option C: Creating a Project\n' + '\033[0m')
 
-    name = []
-    n = input('\nEnter the project name: ')
+    name = []  # value never used?
+    n = input('\nEnter the project name: ')  # value nevver used?
 
     students = []
     x = input("Enter the number of team members: ")  # what if you put in a negative number
@@ -85,6 +64,30 @@ def main():
         y = input("\t Enter the name of team member {}: ".format(str(i + 1)))  # what if you don't put in anything?
         students.append(y)
     input("\nPress <Enter> to return to the main menu:\n ")
+
+
+def get_menu_option_from_user(attempt=0):
+    if attempt > 3:
+        exit(0)
+    choice = input()
+    if choice == "A":
+        pass
+    elif choice == "Q":
+        pass
+    elif choice == "V":
+        pass
+    elif choice == "S":
+        pass
+    elif choice == "C":
+        pass
+    else:
+        print("\n Please choose only options from the menu above: ")
+        get_menu_option_from_user(attempt+1)
+
+
+def main():
+    print_welcome_message()
+    get_menu_option_from_user()
 
 
 if __name__ == '__main__':
