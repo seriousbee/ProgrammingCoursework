@@ -54,8 +54,6 @@ if choice == 'S':
     print('\n')
     main()  # Other option needed to get back to Menu (goto?)
 
-    ## SOPHIE
-
 
 def is_int(text):
     try:
@@ -72,17 +70,8 @@ print('\033[1m' + 'Option C: Creating a Project\n' + '\033[0m')
 name = []
 n = input('\nEnter the project name: ')
 
-
-def is_int(text):
-    try:
-        int(text)
-        return True
-    except:
-        return False
-
-
 students = []
-x = input("Enter the number of team members: ")  # what if you put in a negavtive number
+x = input("Enter the number of team members: ")  # what if you put in a negative number
 count = 0
 max_attempt = 3
 while not is_int(x):
@@ -100,7 +89,7 @@ while x < 0:
             x) + '\033[0m')
     if x >= 1: break
 for i in range(x):
-    y = input("\t Enter the name of team member {}: ".format(str(i + 1)))  # what if yo udon't put in anything?
+    y = input("\t Enter the name of team member {}: ".format(str(i + 1)))  # what if you don't put in anything?
     students.append(y)
 input("\nPress <Enter> to return to the main menu:\n ")
 main()
