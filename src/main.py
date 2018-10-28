@@ -92,4 +92,3 @@ for i in range(x):
     y = input("\t Enter the name of team member {}: ".format(str(i + 1)))  # what if you don't put in anything?
     students.append(y)
 input("\nPress <Enter> to return to the main menu:\n ")
-main()
