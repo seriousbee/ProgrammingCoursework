@@ -1,6 +1,5 @@
 def print_welcome_message():
-    print('Welcome to Split-it\n')
-    print_menu_options()
+    print('Welcome to Split-it')
 
 
 def print_menu_options():
@@ -20,69 +19,64 @@ def is_int(text):
         return False
 
 
-def option_A():
-    print("\n")
-    print("------------")
+def safe_int_input():
+    text = input()
+    if is_int(text):
+        return int(text)
+    print("Try again. Enter an integer number:")
+    safe_int_input()
+
+def option_a():
     print('\033[1m' + 'Option A: About Spliddit\n' + '\033[0m')
-    import textwrap
-
-    instruction = """Hello. This is Spliddit. I am an app that can help you share and distribute things 
-            with your friends and colleagues, from grades to bills, 
-            to notes and good memories. What would you like to split today? 
-            You can decide that by personalizing me in option C."""
-    list = textwrap.wrap(instruction, width=50)
-    for element in list:
-        print(element)
+    print("Hello. This is Spliddit. "
+          "I am an app that can help you share and distribute things with your friends and colleagues, "
+          "from grades to bills, to notes and good memories. "
+          "What would you like to split today? "
+          "You can decide that by personalizing me in option C.")
     input("\nPress <Enter> to return to the main menu: ")
-    main()  # woow, this is dangerous
 
-def option_C():
-    print('\033[1m' + 'Option C: Creating a Project\n' + '\033[0m')
+def option_c():
+    print('\033[1m' + 'Option C: Creating a Project' + '\033[0m')
+    print("Enter the project name: ")
 
-    name = []  # value never used?
-    n = input('\nEnter the project name: ')  # value nevver used?
+    project_name = input()  # value never used
+    students = [] # value never used
 
-    students = []
-    x = input("Enter the number of team members: ")  # what if you put in a negative number
-    count = 0
-    max_attempt = 3
-    while not is_int(x):
-        count += 1
-        if count > max_attempt:
-            from sys import exit
+    print("Enter the number of team members:")
+    number = safe_int_input()
 
-            exit()
-        x = input('Please enter a proper number: ')
-    x = int(x)
-    while x < 0:
-        x = x * (-1)
-        print(
-            '\033[92m' + 'Presumably you meant to type in {}, since minus people are not a thing Mr wannabe Aristotle\n'.format(
-                x) + '\033[0m')
-        if x >= 1: break
-    for i in range(x):
-        y = input("\t Enter the name of team member {}: ".format(str(i + 1)))  # what if you don't put in anything?
-        students.append(y)
+    while number <= 0:
+        print("The number must be positive:")
+        number = safe_int_input()
+
+    for i in range(number):
+        print("\t Enter the name of team member " + str(i+1) + ": ")
+        student = input()
+        students.append(student)
     input("\nPress <Enter> to return to the main menu:\n ")
 
 
 def get_menu_option_from_user(attempt=0):
-    if attempt > 3:
-        exit(0)
+    if attempt == 0:
+        print_menu_options()
+
     choice = input()
+    choice = choice.upper()
     if choice == "A":
-        pass
+        option_a()
+        get_menu_option_from_user(0)
     elif choice == "Q":
-        pass
+        exit(0)
     elif choice == "V":
-        pass
+        get_menu_option_from_user(0)
     elif choice == "S":
-        pass
+        get_menu_option_from_user(0)
     elif choice == "C":
-        pass
+        option_c()
+        get_menu_option_from_user(0)
     else:
         print("\n Please choose only options from the menu above: ")
-        get_menu_option_from_user(attempt+1)
+        get_menu_option_from_user(1)
 
 
 def main():
