@@ -1,7 +1,36 @@
-
 import textwrap
 
 item = {}
+
+class Person:
+    def __init__(self, name, points):
+        self._name = name
+        self._points = points
+
+        # the same person can be in different project (but points assigned to one project)
+        # call functions from module; restructure once we have elements
+
+        # setter (given me the rules(that B+c=100))
+    #  to return the number of points
+
+
+# getter is a return command - it returns what comes out of the setter function; may print or might
+
+class Project:
+    def __init__(self, project, listppl):
+        self._projectname = project
+        self._list_of_persons = listppl
+
+        # create epmty list
+        # depending on vhoice of project use append option, it appends the names into the list
+
+        # dict: {p1: name1,nae2, name3, 3}
+        # extract first 3 postions from a dictionary into a list (asking for info from the same columns)
+        # panda library to read data from files and organize it
+
+    # use pandas to store:
+    #    1) what person A gave to B and C (B+C=100)
+    #   2) what peron A received from B and C (total doesn't = 100)
 
 
 # create a dictionary from opt. C input
@@ -105,6 +134,22 @@ def option_c():
         itemmaker(project_name, students)
     input("\nPress <Enter> to return to the main menu:\n ")
 
+def choose_project():
+    text = input("Enter the project name: ")
+    text = text.upper()
+
+    while text not in item:
+        print("Error:")
+        text = input("Enter the project name: ")
+        text = text.upper()
+
+    print('\033[92m' + 'Try again. Enter an existing project name: ' + '\033[0m')
+    choose_project()
+
+    # later on inorporate validation to try 3 times
+    # capital letter validation by input.upper()
+
+
 
 # choice of a menu option
 def get_menu_option_from_user(attempt=0):
@@ -143,51 +188,6 @@ if __name__ == '__main__':
 
 # DELIVERABLE 2 Parts and Notes
 
-def choose_project():
-    text = input("Enter the project name: ")
-    text = text.upper()
-
-    while text not in item:
-        print("Error:")
-        text = input("Enter the project name: ")
-        text = text.upper()
-
-    print('\033[92m' + 'Try again. Enter an existing project name: ' + '\033[0m')
-    choose_project()
-
-    # later on inorporate validation to try 3 times
-    # capital letter validation by input.upper()
-
-
-class Person:
-    def __init__(self, name, points):
-        self._name = name
-        self._points = points
-
-        # the same person can be in different project (but points assigned to one project)
-        # call functions from module; restructure once we have elements
-
-        # setter (given me the rules(that B+c=100))
-    #  to return the number of points
-
-
-# getter is a return command - it returns what comes out of the setter function; may print or might
-
-class Project:
-    def __init__(self, project, listppl):
-        self._projectname = project
-        self._list_of_persons = listppl
-
-        # create epmty list
-        # depending on vhoice of project use append option, it appends the names into the list
-
-        # dict: {p1: name1,nae2, name3, 3}
-        # extract first 3 postions from a dictionary into a list (asking for info from the same columns)
-        # panda library to read data from files and organize it
-
-    # use pandas to store:
-    #    1) what person A gave to B and C (B+C=100)
-    #   2) what peron A received from B and C (total doesn't = 100)
 
 
 def input_point():
