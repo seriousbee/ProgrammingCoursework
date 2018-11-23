@@ -26,6 +26,7 @@ def safe_int_input():
     print("Try again. Enter an integer number:")
     safe_int_input()
 
+
 def option_a():
     print('\033[1m' + 'Option A: About Spliddit\n' + '\033[0m')
     print("Hello. This is Spliddit. "
@@ -34,6 +35,7 @@ def option_a():
           "What would you like to split today? "
           "You can decide that by personalizing me in option C.")
     input("\nPress <Enter> to return to the main menu: ")
+
 
 def option_c():
     print('\033[1m' + 'Option C: Creating a Project' + '\033[0m')
